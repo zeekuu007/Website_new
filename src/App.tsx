@@ -107,13 +107,13 @@ const SERVICES = [
 
 // --- Components ---
 
-const Logo = ({ className = "" }: { className?: string }) => (
+const Logo = ({ className = "", variant = "light" }: { className?: string, variant?: "light" | "dark" }) => (
   <div className={`flex flex-col select-none ${className}`}>
     <div className="font-display font-black text-3xl tracking-tighter leading-none flex items-baseline">
-      <span className="text-white">DIGITAL</span>
-      <span className="text-brand-lime">MATTER.</span>
+      <span className={variant === "light" ? "text-white" : "text-black"}>DIGITAL</span>
+      <span className={variant === "light" ? "text-brand-lime" : "text-black/80"}>MATTER.</span>
     </div>
-    <div className="font-mono text-[9px] text-white tracking-[0.25em] font-medium self-end -mt-0.5 opacity-90 uppercase">
+    <div className={`font-mono text-[9px] tracking-[0.25em] font-medium self-end -mt-0.5 opacity-90 uppercase ${variant === "light" ? "text-white" : "text-black"}`}>
       Digitally Yours
     </div>
   </div>
@@ -130,23 +130,23 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-brand-border py-4' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-brand-lime shadow-lg py-3' : 'bg-brand-lime py-5'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         <div 
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="cursor-pointer hover:opacity-80 transition-opacity"
+          className="cursor-pointer hover:scale-105 transition-transform"
         >
-          <Logo />
+          <Logo variant="dark" />
         </div>
         
         <div className="hidden md:flex items-center gap-10">
           {['About', 'Impact', 'Services'].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="mono text-gray-500 hover:text-brand-lime transition-colors">{item}</a>
+            <a key={item} href={`#${item.toLowerCase()}`} className="mono text-black/70 hover:text-black hover:font-bold transition-all border-b border-transparent hover:border-black">{item}</a>
           ))}
-          <a href="#audit" className="px-6 py-2 border border-brand-lime text-brand-lime mono hover:bg-brand-lime hover:text-black transition-all">Free Audit</a>
+          <a href="#audit" className="px-6 py-2 bg-black text-brand-lime mono hover:bg-white hover:text-black transition-all">Free Audit</a>
         </div>
 
-        <button className="md:hidden text-brand-lime" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <button className="md:hidden text-black" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           {isMobileMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
@@ -202,7 +202,7 @@ const Hero = () => {
             
             <div className="grid md:grid-cols-2 gap-12 items-end">
               <div>
-                <p className="text-xl text-gray-300 mb-10 leading-relaxed font-light">
+                <p className="text-base text-gray-300 mb-10 leading-relaxed font-light">
                   Turning operational chaos into <span className="text-white font-medium italic underline decoration-brand-lime underline-offset-4">predictable growth</span> through high-performance software and systems strategy.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6">
@@ -243,15 +243,16 @@ const Hero = () => {
 
 const Bio = () => {
   return (
-    <section id="about" className="py-24 relative bg-black">
+    <section id="about" className="py-16 relative bg-black">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-start">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="grid md:grid-cols-2 gap-12 md:gap-24 items-start"
+        >
+          <div>
             <div className="flex items-center gap-4 mb-8">
               <span className="mono text-brand-lime">Capabilities</span>
               <span className="h-px flex-1 bg-brand-border" />
@@ -262,25 +263,19 @@ const Bio = () => {
                 <div key={i} className="group cursor-default">
                   <div className="flex items-center gap-4 mb-3">
                     <div className="text-brand-lime">{exp.icon}</div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-brand-lime transition-colors">{exp.title}</h3>
+                    <h3 className="text-base font-bold text-white group-hover:text-brand-lime transition-colors">{exp.title}</h3>
                   </div>
-                  <p className="text-gray-300 text-lg leading-relaxed pl-9">{exp.description}</p>
+                  <p className="text-gray-300 text-base leading-relaxed pl-9">{exp.description}</p>
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="tech-card p-6 md:p-12 rounded-none relative overflow-hidden"
-          >
+          <div className="tech-card p-6 md:p-12 rounded-none relative overflow-hidden">
             <div className="absolute top-0 left-0 w-1 h-full bg-brand-lime" />
             <div className="mono text-brand-lime mb-12">ARCHITECTURE</div>
-            <h3 className="text-3xl font-bold mb-8 uppercase">About Us</h3>
-            <div className="space-y-8 text-gray-300 leading-relaxed text-lg">
+            <h3 className="text-5xl font-bold mb-8 uppercase">About Us</h3>
+            <div className="space-y-8 text-gray-300 leading-relaxed text-base">
               <p>
                 We are a high-performance engineering collective focused on combining diverse software expertise to deliver superior systems.
               </p>
@@ -291,10 +286,8 @@ const Bio = () => {
                 We do not just provide services; we build the digital infrastructure that allows modern businesses to move with velocity and achieve market dominance.
               </p>
             </div>
-            <div className="mt-12 flex items-center justify-between border-t border-brand-border pt-8">
-            </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -302,14 +295,16 @@ const Bio = () => {
 
 const ProblemSolution = () => {
   return (
-    <section className="py-32 bg-brand-gray">
+    <section className="py-20 bg-brand-gray">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="grid md:grid-cols-2 gap-12 md:gap-24 items-center"
+        >
+          <div>
             <div className="mono text-red-500 mb-6 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
               CRITICAL FAILURES
@@ -326,21 +321,16 @@ const ProblemSolution = () => {
               ].map((item, i) => (
                 <div key={i} className="flex gap-6 items-start">
                   <div className="mono text-red-500 mt-1">[{i+1}]</div>
-                  <p className="text-gray-300 text-lg">{item}</p>
+                  <p className="text-gray-300 text-base">{item}</p>
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
           
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="tech-card p-6 md:p-12 relative"
-          >
+          <div className="tech-card p-6 md:p-12 relative">
             <div className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-brand-lime" />
             <div className="mono text-brand-lime mb-8">Solution Framework</div>
-            <p className="text-xl text-white mb-10 leading-relaxed font-light">
+            <p className="text-base text-white mb-10 leading-relaxed font-light">
               We implement high-performance operational architectures that align your technical execution with market reality.
             </p>
             <div className="grid gap-6">
@@ -357,8 +347,8 @@ const ProblemSolution = () => {
                 </div>
               ))}
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -462,7 +452,7 @@ const Impact = () => {
                   <h2 className="text-4xl font-bold mb-8 uppercase leading-none">
                     {CASE_STUDIES.find(s => s.id === selectedId)?.title}
                   </h2>
-                  <p className="text-gray-300 text-lg mb-10 leading-relaxed font-light">
+                  <p className="text-gray-300 text-base mb-10 leading-relaxed font-light">
                     {CASE_STUDIES.find(s => s.id === selectedId)?.description}
                   </p>
                   
@@ -487,50 +477,53 @@ const Impact = () => {
 
 const Services = () => {
   return (
-    <section id="services" className="py-32 bg-black border-y border-brand-border relative">
+    <section id="services" className="py-20 bg-black border-y border-brand-border relative">
       <div className="container mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-24">
-          <div className="mono text-brand-lime mb-6">SERVICE CATALOG</div>
-          <h2 className="text-6xl font-bold mb-8 uppercase italic leading-none">High Velocity <br /> Systems.</h2>
-          <p className="text-gray-300 font-mono text-sm max-w-xl mx-auto uppercase">
-            WE DO NOT JUST MANAGE TASKS; WE ARCHITECT THE FRAMEWORKS THAT ELIMINATE THE NEED FOR MANAGEMENT.
-          </p>
-        </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="mono text-brand-lime mb-6">SERVICE CATALOG</div>
+            <h2 className="text-6xl font-bold mb-8 uppercase italic leading-none">High Velocity <br /> Systems.</h2>
+            <p className="text-gray-300 font-mono text-sm max-w-xl mx-auto uppercase">
+              WE DO NOT JUST MANAGE TASKS; WE ARCHITECT THE FRAMEWORKS THAT ELIMINATE THE NEED FOR MANAGEMENT.
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {SERVICES.map((service, i) => (
-            <motion.div 
-              key={i} 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="tech-card p-6 md:p-12 rounded-2xl flex flex-col group relative overflow-hidden"
-            >
-              <div className="mono text-gray-500 mb-8 flex items-center gap-2">
-                <span className="text-brand-lime font-bold">{service.index}</span>
-                <span className="w-4 h-px bg-gray-800" />
-                <span>{service.category}</span>
+          <div className="grid md:grid-cols-3 gap-8">
+            {SERVICES.map((service, i) => (
+              <div 
+                key={i} 
+                className="tech-card p-6 md:p-12 rounded-2xl flex flex-col group relative overflow-hidden"
+              >
+                <div className="mono text-gray-500 mb-8 flex items-center gap-2">
+                  <span className="text-brand-lime font-bold">{service.index}</span>
+                  <span className="w-4 h-px bg-gray-800" />
+                  <span>{service.category}</span>
+                </div>
+                
+                <h3 className="text-3xl font-bold mb-6 text-white leading-tight uppercase group-hover:lime-text transition-colors">
+                  {service.title}
+                </h3>
+                
+                <p className="text-gray-300 mb-12 leading-relaxed text-base">
+                  {service.description}
+                </p>
+                
+                <div className="mt-auto flex flex-wrap gap-2">
+                  {service.tags.map((tag, j) => (
+                    <span key={j} className="px-4 py-1.5 border border-brand-border rounded-full mono text-[11px] text-gray-500 group-hover:border-brand-lime/30 group-hover:text-brand-lime transition-all">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-              
-              <h3 className="text-3xl font-bold mb-6 text-white leading-tight uppercase group-hover:lime-text transition-colors">
-                {service.title}
-              </h3>
-              
-              <p className="text-gray-300 mb-12 leading-relaxed text-lg">
-                {service.description}
-              </p>
-              
-              <div className="mt-auto flex flex-wrap gap-2">
-                {service.tags.map((tag, j) => (
-                  <span key={j} className="px-4 py-1.5 border border-brand-border rounded-full mono text-[11px] text-gray-500 group-hover:border-brand-lime/30 group-hover:text-brand-lime transition-all">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -540,9 +533,15 @@ const AuditForm = () => {
   const [state, handleSubmit] = useForm('mdaypgjl');
 
   return (
-    <section id="audit" className="py-32 bg-black relative overflow-hidden">
+    <section id="audit" className="py-20 bg-black relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto border border-brand-border bg-brand-gray overflow-hidden grid md:grid-cols-2">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6 }}
+          className="max-w-6xl mx-auto border border-brand-border bg-brand-gray overflow-hidden grid md:grid-cols-2"
+        >
           <div className="p-8 md:p-16 border-r border-brand-border">
             <div className="mono text-brand-lime mb-12 flex items-center gap-2">
               <span className="w-2 h-2 bg-brand-lime" />
@@ -552,7 +551,7 @@ const AuditForm = () => {
               Let us scale <br />
               <span className="text-brand-lime">Faster.</span>
             </h2>
-            <p className="text-gray-300 mb-12 text-lg leading-relaxed font-light">
+            <p className="text-gray-300 mb-12 text-base leading-relaxed font-light">
               Ready to eliminate delivery bottlenecks? Request a high-intensity architecture audit today.
             </p>
             
@@ -562,7 +561,7 @@ const AuditForm = () => {
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="font-mono text-white text-lg lowercase">hello@thedigitalmatter.com</div>
+                  <div className="font-mono text-white text-base lowercase">hello@thedigitalmatter.com</div>
                 </div>
               </div>
             </div>
@@ -629,7 +628,7 @@ const AuditForm = () => {
               </form>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -638,14 +637,14 @@ const AuditForm = () => {
 
 const Footer = () => {
   return (
-    <footer className="py-12 border-t border-brand-border bg-black">
+    <footer className="py-12 bg-brand-lime">
       <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-        <Logo />
-        <p className="mono text-gray-600 text-[11px]">
+        <Logo variant="dark" />
+        <p className="mono text-black/60 text-[11px] font-bold">
           @ THE DIGITAL MATTER // ALL RIGHTS RESERVED
         </p>
         <div className="flex gap-8">
-          <a href="mailto:hello@thedigitalmatter.com" className="text-gray-500 hover:text-brand-lime transition-colors"><Mail className="w-5 h-5" /></a>
+          <a href="mailto:hello@thedigitalmatter.com" className="text-black/60 hover:text-black transition-colors"><Mail className="w-5 h-5" /></a>
         </div>
       </div>
     </footer>
