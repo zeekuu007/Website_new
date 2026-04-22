@@ -130,23 +130,23 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-brand-lime shadow-lg py-3' : 'bg-brand-lime py-5'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-brand-border py-4' : 'bg-transparent py-6'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         <div 
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="cursor-pointer hover:scale-105 transition-transform"
+          className="cursor-pointer hover:opacity-80 transition-opacity"
         >
-          <Logo variant="dark" />
+          <Logo />
         </div>
         
         <div className="hidden md:flex items-center gap-10">
           {['About', 'Impact', 'Services'].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="mono text-black/70 hover:text-black hover:font-bold transition-all border-b border-transparent hover:border-black">{item}</a>
+            <a key={item} href={`#${item.toLowerCase()}`} className="mono text-brand-lime hover:text-white transition-colors">{item}</a>
           ))}
-          <a href="#audit" className="px-6 py-2 bg-black text-brand-lime mono hover:bg-white hover:text-black transition-all">Free Audit</a>
+          <a href="#audit" className="px-6 py-2 border border-brand-lime text-brand-lime mono hover:bg-brand-lime hover:text-black transition-all">Free Audit</a>
         </div>
 
-        <button className="md:hidden text-black" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <button className="md:hidden text-brand-lime" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           {isMobileMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
@@ -166,7 +166,7 @@ const Navbar = () => {
             </div>
             <div className="flex flex-col gap-8">
               {['About', 'Impact', 'Services'].map((item) => (
-                <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-display font-bold text-white hover:text-brand-lime transition-colors">{item}</a>
+                <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-display font-bold text-brand-lime hover:text-white transition-colors">{item}</a>
               ))}
               <a href="#audit" onClick={() => setIsMobileMenuOpen(false)} className="mt-8 py-4 border border-brand-lime text-brand-lime text-center mono text-lg">Free Audit</a>
             </div>
@@ -637,14 +637,14 @@ const AuditForm = () => {
 
 const Footer = () => {
   return (
-    <footer className="py-12 bg-brand-lime">
+    <footer className="py-12 border-t border-brand-border bg-black">
       <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-        <Logo variant="dark" />
-        <p className="mono text-black/60 text-[11px] font-bold">
+        <Logo />
+        <p className="mono text-brand-lime text-[11px] font-bold">
           @ THE DIGITAL MATTER // ALL RIGHTS RESERVED
         </p>
         <div className="flex gap-8">
-          <a href="mailto:hello@thedigitalmatter.com" className="text-black/60 hover:text-black transition-colors"><Mail className="w-5 h-5" /></a>
+          <a href="mailto:hello@thedigitalmatter.com" className="text-gray-500 hover:text-brand-lime transition-colors"><Mail className="w-5 h-5" /></a>
         </div>
       </div>
     </footer>
