@@ -643,7 +643,7 @@ const Footer = () => {
       <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
         <Logo />
         <p className="mono text-gray-600 text-[11px]">
-          © {new Date().getFullYear()} THE DIGITAL MATTER // SYSTEMS ARCHITECTURE // ALL RIGHTS RESERVED
+          @ THE DIGITAL MATTER // ALL RIGHTS RESERVED
         </p>
         <div className="flex gap-8">
           <a href="mailto:hello@thedigitalmatter.com" className="text-gray-500 hover:text-brand-lime transition-colors"><Mail className="w-5 h-5" /></a>
