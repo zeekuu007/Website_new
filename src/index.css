@@ -15,7 +15,7 @@
 
 @layer base {
   body {
-    @apply bg-brand-bg text-gray-400 font-sans antialiased;
+    @apply bg-brand-bg text-gray-300 font-sans antialiased;
   }
   
   h1, h2, h3, h4 {

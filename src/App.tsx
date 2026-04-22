@@ -202,7 +202,7 @@ const Hero = () => {
             
             <div className="grid md:grid-cols-2 gap-12 items-end">
               <div>
-                <p className="text-xl text-gray-400 mb-10 leading-relaxed font-light">
+                <p className="text-xl text-gray-300 mb-10 leading-relaxed font-light">
                   Turning operational chaos into <span className="text-white font-medium italic underline decoration-brand-lime underline-offset-4">predictable growth</span> through high-performance software and systems strategy.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6">
@@ -228,7 +228,7 @@ const Hero = () => {
                 ].map((stat, i) => (
                   <div key={i}>
                     <div className="text-4xl font-display font-bold text-white mb-2">{stat.value}</div>
-                    <div className="mono text-gray-600">{stat.label}</div>
+                    <div className="mono text-brand-lime">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -264,7 +264,7 @@ const Bio = () => {
                     <div className="text-brand-lime">{exp.icon}</div>
                     <h3 className="text-xl font-bold text-white group-hover:text-brand-lime transition-colors">{exp.title}</h3>
                   </div>
-                  <p className="text-gray-500 leading-relaxed pl-9">{exp.description}</p>
+                  <p className="text-gray-300 text-lg leading-relaxed pl-9">{exp.description}</p>
                 </div>
               ))}
             </div>
@@ -280,19 +280,18 @@ const Bio = () => {
             <div className="absolute top-0 left-0 w-1 h-full bg-brand-lime" />
             <div className="mono text-brand-lime mb-12">ARCHITECTURE</div>
             <h3 className="text-3xl font-bold mb-8 uppercase">About Us</h3>
-            <div className="space-y-8 text-gray-400 leading-relaxed text-lg">
+            <div className="space-y-8 text-gray-300 leading-relaxed text-lg">
               <p>
-                We're a high-performance engineering collective focused on combining diverse software expertise to deliver superior systems.
+                We are a high-performance engineering collective focused on combining diverse software expertise to deliver superior systems.
               </p>
               <p>
                 Our core team excels in <span className="text-white font-medium underline decoration-brand-lime underline-offset-4">software development</span>, <span className="text-white font-medium underline decoration-brand-lime underline-offset-4">system integration</span>, and <span className="text-white font-medium underline decoration-brand-lime underline-offset-4">strategic sales planning</span>.
               </p>
               <p>
-                We don't just provide services; we build the digital infrastructure that allows modern businesses to move with velocity and achieve market dominance.
+                We do not just provide services; we build the digital infrastructure that allows modern businesses to move with velocity and achieve market dominance.
               </p>
             </div>
             <div className="mt-12 flex items-center justify-between border-t border-brand-border pt-8">
-              <div className="mono">EST. 2024</div>
             </div>
           </motion.div>
         </div>
@@ -327,7 +326,7 @@ const ProblemSolution = () => {
               ].map((item, i) => (
                 <div key={i} className="flex gap-6 items-start">
                   <div className="mono text-red-500 mt-1">[{i+1}]</div>
-                  <p className="text-gray-400 text-lg">{item}</p>
+                  <p className="text-gray-300 text-lg">{item}</p>
                 </div>
               ))}
             </div>
@@ -342,7 +341,7 @@ const ProblemSolution = () => {
             <div className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-brand-lime" />
             <div className="mono text-brand-lime mb-8">Solution Framework</div>
             <p className="text-xl text-white mb-10 leading-relaxed font-light">
-              I implement high-performance operational architectures that align your technical execution with market reality.
+              We implement high-performance operational architectures that align your technical execution with market reality.
             </p>
             <div className="grid gap-6">
               {[
@@ -463,7 +462,7 @@ const Impact = () => {
                   <h2 className="text-4xl font-bold mb-8 uppercase leading-none">
                     {CASE_STUDIES.find(s => s.id === selectedId)?.title}
                   </h2>
-                  <p className="text-gray-400 text-lg mb-10 leading-relaxed font-light">
+                  <p className="text-gray-300 text-lg mb-10 leading-relaxed font-light">
                     {CASE_STUDIES.find(s => s.id === selectedId)?.description}
                   </p>
                   
@@ -493,8 +492,8 @@ const Services = () => {
         <div className="text-center max-w-3xl mx-auto mb-24">
           <div className="mono text-brand-lime mb-6">SERVICE CATALOG</div>
           <h2 className="text-6xl font-bold mb-8 uppercase italic leading-none">High Velocity <br /> Systems.</h2>
-          <p className="text-gray-500 font-mono text-sm max-w-xl mx-auto">
-            WE DON'T JUST MANAGE TASKS; WE ARCHITECT THE FRAMEWORKS THAT ELIMINATE THE NEED FOR MANAGEMENT.
+          <p className="text-gray-300 font-mono text-sm max-w-xl mx-auto uppercase">
+            WE DO NOT JUST MANAGE TASKS; WE ARCHITECT THE FRAMEWORKS THAT ELIMINATE THE NEED FOR MANAGEMENT.
           </p>
         </div>
 
@@ -518,7 +517,7 @@ const Services = () => {
                 {service.title}
               </h3>
               
-              <p className="text-gray-500 mb-12 leading-relaxed text-lg">
+              <p className="text-gray-300 mb-12 leading-relaxed text-lg">
                 {service.description}
               </p>
               
@@ -550,10 +549,10 @@ const AuditForm = () => {
               SYSTEMS AUDIT
             </div>
             <h2 className="text-6xl font-bold mb-10 uppercase leading-[0.9]">
-              Let's scale <br />
+              Let us scale <br />
               <span className="text-brand-lime">Faster.</span>
             </h2>
-            <p className="text-gray-400 mb-12 text-lg leading-relaxed font-light">
+            <p className="text-gray-300 mb-12 text-lg leading-relaxed font-light">
               Ready to eliminate delivery bottlenecks? Request a high-intensity architecture audit today.
             </p>
             
@@ -580,7 +579,7 @@ const AuditForm = () => {
                   <CheckCircle2 className="w-12 h-12" />
                 </div>
                 <h3 className="text-3xl font-bold mb-4 uppercase">THANK YOU FOR CHOOSING US!</h3>
-                <p className="mono text-gray-400">THE TEAM WILL GET IN TOUCH WITH YOU</p>
+                <p className="mono text-gray-300">THE TEAM WILL GET IN TOUCH WITH YOU</p>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-10">
