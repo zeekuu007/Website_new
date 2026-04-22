@@ -66,7 +66,7 @@ const CASE_STUDIES: CaseStudy[] = [
 const EXPERTISES = [
   {
     title: "Software Development & Systems Integration",
-    description: "Experienced engineers with over 15 years in developing high-quality software solutions and business systems integration with AI.",
+    description: "Experienced engineers with over 8 years in developing high-quality software solutions and business systems integration with AI.",
     icon: <Zap className="w-5 h-5" />
   },
   {
@@ -202,7 +202,7 @@ const Hero = () => {
             
             <div className="grid md:grid-cols-2 gap-12 items-end">
               <div>
-                <p className="text-base text-gray-300 mb-10 leading-relaxed font-light">
+                <p className="text-base text-gray-300 mb-10 leading-relaxed font-light text-justify">
                   Turning operational chaos into <span className="text-white font-medium italic underline decoration-brand-lime underline-offset-4">predictable growth</span> through high-performance software and systems strategy.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6">
@@ -252,7 +252,8 @@ const Bio = () => {
           transition={{ duration: 0.6 }}
           className="grid md:grid-cols-2 gap-12 md:gap-24 items-start"
         >
-          <div>
+          {/* Left Column */}
+          <div className="pt-2 md:pt-12">
             <div className="flex items-center gap-4 mb-8">
               <span className="mono text-brand-lime">Capabilities</span>
               <span className="h-px flex-1 bg-brand-border" />
@@ -265,24 +266,28 @@ const Bio = () => {
                     <div className="text-brand-lime">{exp.icon}</div>
                     <h3 className="text-base font-bold text-white group-hover:text-brand-lime transition-colors">{exp.title}</h3>
                   </div>
-                  <p className="text-gray-300 text-base leading-relaxed pl-9">{exp.description}</p>
+                  <p className="text-gray-300 text-base leading-relaxed pl-9 text-justify">{exp.description}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="tech-card p-6 md:p-12 rounded-none relative overflow-hidden">
+          {/* Right Column */}
+          <div className="tech-card p-6 md:p-12 rounded-none relative overflow-hidden h-full">
             <div className="absolute top-0 left-0 w-1 h-full bg-brand-lime" />
-            <div className="mono text-brand-lime mb-12">ARCHITECTURE</div>
-            <h3 className="text-5xl font-bold mb-8 uppercase">About Us</h3>
+            <div className="flex items-center gap-4 mb-8">
+              <span className="mono text-brand-lime">ARCHITECTURE</span>
+              <span className="h-px flex-1 bg-white/10" />
+            </div>
+            <h3 className="text-5xl font-bold mb-12 uppercase">About Us</h3>
             <div className="space-y-8 text-gray-300 leading-relaxed text-base">
-              <p>
+              <p className="text-justify">
                 We are a high-performance engineering collective focused on combining diverse software expertise to deliver superior systems.
               </p>
-              <p>
+              <p className="text-justify">
                 Our core team excels in <span className="text-white font-medium underline decoration-brand-lime underline-offset-4">software development</span>, <span className="text-white font-medium underline decoration-brand-lime underline-offset-4">system integration</span>, and <span className="text-white font-medium underline decoration-brand-lime underline-offset-4">strategic sales planning</span>.
               </p>
-              <p>
+              <p className="text-justify">
                 We do not just provide services; we build the digital infrastructure that allows modern businesses to move with velocity and achieve market dominance.
               </p>
             </div>
@@ -321,7 +326,7 @@ const ProblemSolution = () => {
               ].map((item, i) => (
                 <div key={i} className="flex gap-6 items-start">
                   <div className="mono text-red-500 mt-1">[{i+1}]</div>
-                  <p className="text-gray-300 text-base">{item}</p>
+                  <p className="text-gray-300 text-base text-justify">{item}</p>
                 </div>
               ))}
             </div>
@@ -330,7 +335,7 @@ const ProblemSolution = () => {
           <div className="tech-card p-6 md:p-12 relative">
             <div className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-brand-lime" />
             <div className="mono text-brand-lime mb-8">Solution Framework</div>
-            <p className="text-base text-white mb-10 leading-relaxed font-light">
+            <p className="text-base text-white mb-10 leading-relaxed font-light text-justify">
               We implement high-performance operational architectures that align your technical execution with market reality.
             </p>
             <div className="grid gap-6">
@@ -452,7 +457,7 @@ const Impact = () => {
                   <h2 className="text-4xl font-bold mb-8 uppercase leading-none">
                     {CASE_STUDIES.find(s => s.id === selectedId)?.title}
                   </h2>
-                  <p className="text-gray-300 text-base mb-10 leading-relaxed font-light">
+                  <p className="text-gray-300 text-base mb-10 leading-relaxed font-light text-justify">
                     {CASE_STUDIES.find(s => s.id === selectedId)?.description}
                   </p>
                   
@@ -509,7 +514,7 @@ const Services = () => {
                   {service.title}
                 </h3>
                 
-                <p className="text-gray-300 mb-12 leading-relaxed text-base">
+                <p className="text-gray-300 mb-12 leading-relaxed text-base text-justify">
                   {service.description}
                 </p>
                 
@@ -551,7 +556,7 @@ const AuditForm = () => {
               Let us scale <br />
               <span className="text-brand-lime">Faster.</span>
             </h2>
-            <p className="text-gray-300 mb-12 text-base leading-relaxed font-light">
+            <p className="text-gray-300 mb-12 text-base leading-relaxed font-light text-justify">
               Ready to eliminate delivery bottlenecks? Request a high-intensity architecture audit today.
             </p>
             
