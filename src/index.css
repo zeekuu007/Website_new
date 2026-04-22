@@ -36,6 +36,6 @@
 }
 
 .mono {
-  @apply font-mono text-[10px] uppercase tracking-[0.2em];
+  @apply font-mono text-[12px] uppercase tracking-[0.2em];
 }
 

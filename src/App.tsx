@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
+import { useForm, ValidationError } from '@formspree/react';
 import { 
   ArrowRight, 
   CheckCircle2, 
@@ -108,12 +109,12 @@ const SERVICES = [
 
 const Logo = ({ className = "" }: { className?: string }) => (
   <div className={`flex flex-col select-none ${className}`}>
-    <div className="font-display font-black text-2xl tracking-tighter leading-none">
+    <div className="font-display font-black text-3xl tracking-tighter leading-none flex items-baseline">
       <span className="text-white">DIGITAL</span>
-      <span className="text-brand-lime">MATTERS.</span>
+      <span className="text-brand-lime">MATTER.</span>
     </div>
-    <div className="font-mono text-[10px] text-gray-600 tracking-[0.3em] font-bold mt-1">
-      EST. 2024
+    <div className="font-mono text-[9px] text-white tracking-[0.25em] font-medium self-end -mt-0.5 opacity-90 uppercase">
+      Digitally Yours
     </div>
   </div>
 );
@@ -194,7 +195,7 @@ const Hero = () => {
               <span className="mono text-brand-lime">Elite Systems Architect</span>
             </div>
             
-            <h1 className="text-7xl md:text-9xl font-bold leading-[0.9] mb-12 uppercase">
+            <h1 className="text-5xl sm:text-7xl md:text-9xl font-bold leading-[0.9] mb-12 uppercase">
               We focus on <br />
               <span className="text-brand-lime">Execution.</span>
             </h1>
@@ -207,13 +208,13 @@ const Hero = () => {
                 <div className="flex flex-col sm:flex-row gap-6">
                   <button 
                     onClick={() => document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="px-10 py-5 bg-brand-lime text-black font-mono font-bold hover:bg-white transition-all flex items-center justify-center gap-3 group"
+                    className="px-10 py-5 bg-brand-lime text-black font-mono font-bold tracking-widest hover:bg-white transition-all flex items-center justify-center gap-3 group"
                   >
                     INITIATE AUDIT <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </button>
                   <button 
                     onClick={() => document.getElementById('impact')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="px-10 py-5 border border-white/20 text-white font-mono font-bold hover:border-brand-lime hover:text-brand-lime transition-all"
+                    className="px-10 py-5 border border-white/20 text-white font-mono font-bold tracking-widest hover:border-brand-lime hover:text-brand-lime transition-all"
                   >
                     VIEW PORTFOLIO
                   </button>
@@ -244,7 +245,7 @@ const Bio = () => {
   return (
     <section id="about" className="py-24 relative bg-black">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-24 items-start">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-start">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -274,10 +275,10 @@ const Bio = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="tech-card p-12 rounded-none relative overflow-hidden"
+            className="tech-card p-6 md:p-12 rounded-none relative overflow-hidden"
           >
             <div className="absolute top-0 left-0 w-1 h-full bg-brand-lime" />
-            <div className="mono text-brand-lime mb-8">Engineering Protocol 01</div>
+            <div className="mono text-brand-lime mb-12">ARCHITECTURE</div>
             <h3 className="text-3xl font-bold mb-8 uppercase">About Us</h3>
             <div className="space-y-8 text-gray-400 leading-relaxed text-lg">
               <p>
@@ -292,7 +293,6 @@ const Bio = () => {
             </div>
             <div className="mt-12 flex items-center justify-between border-t border-brand-border pt-8">
               <div className="mono">EST. 2024</div>
-              <div className="mono text-brand-lime">STATUS: ACTIVE</div>
             </div>
           </motion.div>
         </div>
@@ -305,7 +305,7 @@ const ProblemSolution = () => {
   return (
     <section className="py-32 bg-brand-gray">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-24 items-center">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -337,7 +337,7 @@ const ProblemSolution = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="tech-card p-12 relative"
+            className="tech-card p-6 md:p-12 relative"
           >
             <div className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-brand-lime" />
             <div className="mono text-brand-lime mb-8">Solution Framework</div>
@@ -372,7 +372,7 @@ const Impact = () => {
   return (
     <section id="impact" className="py-24 bg-black">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -387,7 +387,6 @@ const Impact = () => {
             viewport={{ once: true }}
             className="text-gray-500 max-w-sm mono"
           >
-            SENSITIVE PROJECT DATA // REDACTED // KEY PERFORMANCE METRICS BELOW
           </motion.p>
         </div>
 
@@ -457,7 +456,7 @@ const Impact = () => {
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                <div className="p-12">
+                <div className="p-6 md:p-12">
                   <div className="mono text-brand-lime mb-4">
                     {CASE_STUDIES.find(s => s.id === selectedId)?.category}
                   </div>
@@ -492,7 +491,7 @@ const Services = () => {
     <section id="services" className="py-32 bg-black border-y border-brand-border relative">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-24">
-          <div className="mono text-brand-lime mb-6">SERVICE CATALOG // 2024</div>
+          <div className="mono text-brand-lime mb-6">SERVICE CATALOG</div>
           <h2 className="text-6xl font-bold mb-8 uppercase italic leading-none">High Velocity <br /> Systems.</h2>
           <p className="text-gray-500 font-mono text-sm max-w-xl mx-auto">
             WE DON'T JUST MANAGE TASKS; WE ARCHITECT THE FRAMEWORKS THAT ELIMINATE THE NEED FOR MANAGEMENT.
@@ -507,7 +506,7 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="tech-card p-12 rounded-2xl flex flex-col group relative overflow-hidden"
+              className="tech-card p-6 md:p-12 rounded-2xl flex flex-col group relative overflow-hidden"
             >
               <div className="mono text-gray-500 mb-8 flex items-center gap-2">
                 <span className="text-brand-lime font-bold">{service.index}</span>
@@ -525,7 +524,7 @@ const Services = () => {
               
               <div className="mt-auto flex flex-wrap gap-2">
                 {service.tags.map((tag, j) => (
-                  <span key={j} className="px-4 py-1.5 border border-brand-border rounded-full mono text-[9px] text-gray-500 group-hover:border-brand-lime/30 group-hover:text-brand-lime transition-all">
+                  <span key={j} className="px-4 py-1.5 border border-brand-border rounded-full mono text-[11px] text-gray-500 group-hover:border-brand-lime/30 group-hover:text-brand-lime transition-all">
                     {tag}
                   </span>
                 ))}
@@ -539,22 +538,16 @@ const Services = () => {
 };
 
 const AuditForm = () => {
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('submitting');
-    setTimeout(() => setStatus('success'), 1500);
-  };
+  const [state, handleSubmit] = useForm('mdaypgjl');
 
   return (
     <section id="audit" className="py-32 bg-black relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto border border-brand-border bg-brand-gray overflow-hidden grid md:grid-cols-2">
-          <div className="p-16 border-r border-brand-border">
-            <div className="mono text-brand-lime mb-8 flex items-center gap-2">
+          <div className="p-8 md:p-16 border-r border-brand-border">
+            <div className="mono text-brand-lime mb-12 flex items-center gap-2">
               <span className="w-2 h-2 bg-brand-lime" />
-              SYSTEM PROTOCOL 04: CONSULT
+              SYSTEMS AUDIT
             </div>
             <h2 className="text-6xl font-bold mb-10 uppercase leading-[0.9]">
               Let's scale <br />
@@ -570,15 +563,14 @@ const AuditForm = () => {
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="mono text-gray-500 text-[10px] mb-1">SECURE ENCRYPTED CHANNEL</div>
-                  <div className="font-mono text-white text-lg">Hello@thedigitalmatters.com</div>
+                  <div className="font-mono text-white text-lg lowercase">hello@thedigitalmatter.com</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="p-16">
-            {status === 'success' ? (
+          <div className="p-8 md:p-16">
+            {state.succeeded ? (
               <motion.div 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -587,8 +579,8 @@ const AuditForm = () => {
                 <div className="w-24 h-24 border border-brand-lime flex items-center justify-center text-brand-lime mb-8">
                   <CheckCircle2 className="w-12 h-12" />
                 </div>
-                <h3 className="text-3xl font-bold mb-4 uppercase">TRANSMISSION RECEIVED</h3>
-                <p className="mono text-gray-400">ETA: 24 HOURS // STANDBY</p>
+                <h3 className="text-3xl font-bold mb-4 uppercase">THANK YOU FOR CHOOSING US!</h3>
+                <p className="mono text-gray-400">THE TEAM WILL GET IN TOUCH WITH YOU</p>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-10">
@@ -596,36 +588,45 @@ const AuditForm = () => {
                   <div className="space-y-3">
                     <label className="mono text-gray-500">OPERATOR NAME</label>
                     <input 
+                      name="name"
                       required
                       type="text" 
-                      className="w-full px-0 py-4 bg-transparent border-b border-brand-border focus:border-brand-lime outline-none transition-all text-white font-mono"
+                      className="w-full px-0 py-4 bg-transparent border-b border-brand-lime/50 focus:border-brand-lime outline-none transition-all text-white font-mono"
                       placeholder="J. DOE"
                     />
+                    <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-500 text-[10px] mono" />
                   </div>
                   <div className="space-y-3">
                     <label className="mono text-gray-500">SECURE EMAIL</label>
                     <input 
+                      name="email"
                       required
                       type="email" 
-                      className="w-full px-0 py-4 bg-transparent border-b border-brand-border focus:border-brand-lime outline-none transition-all text-white font-mono"
+                      className="w-full px-0 py-4 bg-transparent border-b border-brand-lime/50 focus:border-brand-lime outline-none transition-all text-white font-mono"
                       placeholder="J@COMPANY.CO"
                     />
+                    <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-[10px] mono" />
                   </div>
                 </div>
                 <div className="space-y-3">
                   <label className="mono text-gray-500">SYSTEM BOTTLENECK ANALYSIS</label>
                   <textarea 
+                    name="message"
                     required
-                    className="w-full px-0 py-4 bg-transparent border-b border-brand-border focus:border-brand-lime outline-none transition-all min-h-[120px] text-white font-mono resize-none"
+                    className="w-full px-0 py-4 bg-transparent border-b border-brand-lime/50 focus:border-brand-lime outline-none transition-all min-h-[120px] text-white font-mono resize-none"
                     placeholder="DESCRIBE CURRENT DELIVERY FRICTION..."
                   />
+                  <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-500 text-[10px] mono" />
                 </div>
                 <button 
-                  disabled={status === 'submitting'}
+                  disabled={state.submitting}
                   className="w-full py-6 bg-brand-lime text-black font-mono font-bold hover:bg-white transition-all disabled:opacity-50 uppercase tracking-[0.2em]"
                 >
-                  {status === 'submitting' ? 'TRANSMITTING...' : 'INITIATE REQUEST'}
+                  {state.submitting ? 'TRANSMITTING...' : 'INITIATE REQUEST'}
                 </button>
+                {state.errors && (
+                  <p className="text-red-500 text-[10px] mono text-center">AN ERROR OCCURRED. PLEASE TRY AGAIN.</p>
+                )}
               </form>
             )}
           </div>
@@ -641,11 +642,11 @@ const Footer = () => {
     <footer className="py-12 border-t border-brand-border bg-black">
       <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
         <Logo />
-        <p className="mono text-gray-600 text-[10px]">
-          © {new Date().getFullYear()} THE DIGITAL MATTERS // SYSTEMS ARCHITECTURE // ALL RIGHTS RESERVED
+        <p className="mono text-gray-600 text-[11px]">
+          © {new Date().getFullYear()} THE DIGITAL MATTER // SYSTEMS ARCHITECTURE // ALL RIGHTS RESERVED
         </p>
         <div className="flex gap-8">
-          <a href="mailto:Hello@thedigitalmatters.com" className="text-gray-500 hover:text-brand-lime transition-colors"><Mail className="w-5 h-5" /></a>
+          <a href="mailto:hello@thedigitalmatter.com" className="text-gray-500 hover:text-brand-lime transition-colors"><Mail className="w-5 h-5" /></a>
         </div>
       </div>
     </footer>
